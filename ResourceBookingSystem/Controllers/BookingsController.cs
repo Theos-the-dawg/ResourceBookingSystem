@@ -17,7 +17,12 @@ namespace ResourceBookingSystem.Controllers
             _context = context;
         }
 
-        // GET: Bookings
+        /// <summary>
+        /// GET: Bookings able to search by resource name and filter by date.
+        /// </summary>
+        /// <param name="resourceName"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Index(string resourceName, DateTime? date)
         {
             var bookings = _context.Bookings.Include(b => b.Resource).AsQueryable();
@@ -31,7 +36,11 @@ namespace ResourceBookingSystem.Controllers
             return View(await bookings.ToListAsync());
         }
 
-        // GET: Bookings/Details/5
+        /// <summary>
+        ///  GET: Bookings/Details by using the Booking ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,14 +59,21 @@ namespace ResourceBookingSystem.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Create
+        /// <summary>
+        /// GET: Lists the Resource by ID and allows the user to create a new booking.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
             return View();
         }
 
-        // POST: Bookings/Create
+        /// <summary>
+        /// Create a new booking for a resource. and checks for overlapping bookings.
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ResourceId,StartTime,EndTime,BookedBy,Purpose")] Booking booking)
@@ -89,7 +105,11 @@ namespace ResourceBookingSystem.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Edit/5
+        /// <summary>
+        /// Selects a booking by ID and allows the user to edit it.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,9 +126,13 @@ namespace ResourceBookingSystem.Controllers
             return View(booking);
         }
 
-        // POST: Bookings/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// POST: Update a booking by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="booking"></param>
+        /// <returns></returns>
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ResourceId,StartTime,EndTime,BookedBy,Purpose")] Booking booking)
@@ -142,7 +166,11 @@ namespace ResourceBookingSystem.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Delete/5
+        /// <summary>
+        ///GET: Bookings/Delete/ gets the booking by ID and allows the user to delete it.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -161,7 +189,11 @@ namespace ResourceBookingSystem.Controllers
             return View(booking);
         }
 
-        // POST: Bookings/Delete/5
+        /// <summary>
+        /// POST: Bookings/Delete/ delete a booking by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

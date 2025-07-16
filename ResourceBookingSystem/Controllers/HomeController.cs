@@ -15,7 +15,10 @@ namespace ResourceBookingSystem.Controllers
             _logger = logger;
             _context = context;
         }
-
+        /// <summary>
+        /// Get: Home/Index displays a list of all bookings with related resources.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             var bookings = _context.Bookings
@@ -28,13 +31,16 @@ namespace ResourceBookingSystem.Controllers
         {
             return View();
         }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        /// <summary>
+        /// creates a dashboard view that shows today's bookings.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Dashboard()
         {
             var today = DateTime.Today;
