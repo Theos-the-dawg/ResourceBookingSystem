@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ResourceBookingSystem.Data;
 using ResourceBookingSystem.Models;
 using System;
 using System.Linq;
