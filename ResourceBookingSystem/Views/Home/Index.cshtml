@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<h1>Dashboard</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Resource</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Booked By</th>
+            <th>Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var booking in Model)
+    {
+        <tr>
+            <td>@booking.Resource?.Name</td>
+            <td>@booking.StartTime</td>
+            <td>@booking.EndTime</td>
+            <td>@booking.BookedBy</td>
+            <td>@booking.Purpose</td>
+        </tr>
+    }
+    </tbody>
+</table>

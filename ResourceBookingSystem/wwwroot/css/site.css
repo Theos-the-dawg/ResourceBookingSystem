@@ -1,0 +1,45 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* Golden yellow and grey custom classes */
+.text-gold {
+    color: #FFD700 !important;
+}
+
+.bg-gold {
+    background-color: #FFD700 !important;
+    color: #111 !important;
+}
+
+.bg-grey {
+    background-color: #343a40 !important; /* Bootstrap dark grey */
+    color: #FFD700 !important;
+}
+
+.bg-grey, .bg-grey * {
+    color: #fff !important;
+}
+
+input.form-control,
+textarea.form-control {
+    color: #000 !important;
+}
